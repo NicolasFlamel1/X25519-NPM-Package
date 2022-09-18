@@ -1,0 +1,35 @@
+{
+	"name": "@nicolasflamel/x25519",
+	"version": "0.0.1",
+	"description": "NPM package for parts of SUPERCOP's X25519 implementation",
+	"main": "./index.js",
+	"files": [
+		"*",
+		"!main.cpp",
+		"!crypto_hash_sha512.c",
+		"!crypto_hash_sha512.h",
+		"!crypto_int32.h",
+		"!crypto_int64.h",
+		"!crypto_scalarmult.h",
+		"!crypto_uint64.h"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/NicolasFlamel1/X25519-NPM-Package.git"
+	},
+	"keywords": [
+		"X25519"
+	],
+	"author": "Nicolas Flamel",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/NicolasFlamel1/X25519-NPM-Package/issues"
+	},
+	"dependencies": {
+		"@nicolasflamel/x25519-wasm": "^0.0.21"
+	},
+	"optionalDependencies": {
+		"@nicolasflamel/x25519-native": "^0.0.17",
+		"@nicolasflamel/x25519-react": "^0.0.7"
+	}
+}
