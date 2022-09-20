@@ -11,7 +11,8 @@
 		"!crypto_int32.h",
 		"!crypto_int64.h",
 		"!crypto_scalarmult.h",
-		"!crypto_uint64.h"
+		"!crypto_uint64.h",
+		"!tests.js"
 	],
 	"repository": {
 		"type": "git",
