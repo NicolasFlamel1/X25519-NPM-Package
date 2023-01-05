@@ -1,6 +1,7 @@
 // Header files
 #include <cstddef>
 #include <cstring>
+#include <vector>
 #include "./supercop-20220213/crypto_dh/curve25519/ref/api.h"
 
 // Check if using Emscripten
@@ -64,6 +65,9 @@ EXPORT size_t EMSCRIPTEN_KEEPALIVE sharedSecretKeySize();
 
 // Shared secret key from secret key and public key
 EXPORT bool EMSCRIPTEN_KEEPALIVE sharedSecretKeyFromSecretKeyAndPublicKey(uint8_t *sharedSecretKey, const uint8_t *secretKey, size_t secretKeySize, const uint8_t *publicKey, size_t publicKeySize);
+
+// Is zero array
+static bool isZeroArray(const void *value, size_t size);
 
 
 // Supporting function implementation
@@ -137,6 +141,14 @@ bool publicKeyFromEd25519PublicKey(uint8_t *publicKey, const uint8_t *ed25519Pub
 	fe oneMinusY;
 	fe_sub(oneMinusY, one, y);
 	
+	// Check if 1 - y is zero
+	fe_tobytes(publicKey, oneMinusY);
+	if(isZeroArray(publicKey, CRYPTO_PUBLICKEYBYTES)) {
+	
+		// Return false
+		return false;
+	}
+	
 	// Compute (1 + y) / (1 - y)
 	fe_invert(oneMinusY, oneMinusY);
 	fe_mul(onePlusY, onePlusY, oneMinusY);
@@ -174,4 +186,15 @@ bool sharedSecretKeyFromSecretKeyAndPublicKey(uint8_t *sharedSecretKey, const ui
 	
 	// Return true
 	return true;
+}
+
+// Is zero array
+bool isZeroArray(const void *value, size_t size) {
+
+	// Create zeros buffer
+	vector<uint8_t> zerosBuffer(size);
+	explicit_bzero(zerosBuffer.data(), size);
+	
+	// Return if value is equal to the zero buffer
+	return !memcmp(value, zerosBuffer.data(), size);
 }

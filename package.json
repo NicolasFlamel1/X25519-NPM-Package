@@ -1,6 +1,6 @@
 {
 	"name": "@nicolasflamel/x25519",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "NPM package for parts of SUPERCOP's X25519 implementation",
 	"main": "./index.js",
 	"files": [
@@ -27,10 +27,10 @@
 		"url": "https://github.com/NicolasFlamel1/X25519-NPM-Package/issues"
 	},
 	"dependencies": {
-		"@nicolasflamel/x25519-wasm": "^0.0.22"
+		"@nicolasflamel/x25519-wasm": "^0.0.23"
 	},
 	"optionalDependencies": {
-		"@nicolasflamel/x25519-native": "^0.0.18",
-		"@nicolasflamel/x25519-react": "^0.0.8"
+		"@nicolasflamel/x25519-native": "^0.0.19",
+		"@nicolasflamel/x25519-react": "^0.0.9"
 	}
 }
