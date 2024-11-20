@@ -1,3 +1,5 @@
+// Derived from supercop-20220213/crypto_hashblocks/sha512/ref/blocks.c and supercop-20220213/crypto_hash/sha512/ref/hash.c and is subject to the same license as those files
+
 #include <stdint.h>
 #include "./crypto_hash_sha512.h"
 
